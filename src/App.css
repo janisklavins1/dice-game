@@ -1,3 +1,7 @@
+.app {
+  padding-top: 30px;
+}
+
 main {
   background-color: #F5F5F5;
   border-radius: 10px;
@@ -13,7 +17,7 @@ button {
   border-radius: 3.81277px;
   width: 90px;
   height: 35px;
-  font-family : inherit;
+  font-family: inherit;
   font-size: 1em;
   padding: 0;
   border: none;
@@ -56,6 +60,14 @@ button {
   justify-content: center;
   align-items: center;
   margin: 9px;
+}
+
+.dice-box:hover {
+  cursor: pointer;
+}
+
+.clicked {
+  background: #59E391;
 }
 
 .dice-number {
