@@ -1,4 +1,5 @@
 import './App.css';
+import Dice from './components/Dice';
 
 function App() {
   return (
@@ -6,7 +7,7 @@ function App() {
       <main>
         <h1 className='heading'>Tenzies</h1>
         <p className='paragraph'>Roll until all dice are the same. Click each die to freeze it at its current value between rolls.</p>
-        <p>Grid</p>
+        <Dice />
         <button>Roll</button>
       </main>
     </div>
