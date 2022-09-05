@@ -7,19 +7,25 @@ function App() {
 
   const [diceProps, setDiceProps] = useState(DiceProperties);
 
-  console.log(diceProps)
-
-  function clickItem() {
-    ///
+  function clickItem(event) {
+    console.log(event)
+    setDiceProps(prev => {
+      return prev.map(item => {
+        console.log(item.clicked)
+        //item.id === clickedId ? {...item, clicked : !item.clicked} : item
+        return {...item, clicked : !item.clicked}
+      })
+    })
   }
 
+  console.log(diceProps)
+
   function rollDice(){
-    return ''
+    return Math.floor(6*Math.random())+1
   }
 
   const dice = DiceProperties.map((item) =>{
-    let randomDiceRoll = Math.floor(6*Math.random())+1
-    //return {...item, value: randomDiceRoll}
+    //return {...item, value: rollDice()}
     return <Dice key={item.id} clicked={diceProps.clicked} clickItem={clickItem}/>
   })
 
