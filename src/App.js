@@ -1,25 +1,37 @@
 import './App.css';
 import { useState } from 'react';
 import Dice from './components/Dice';
+import DiceProperties from './DiceProperties';
 
 function App() {
 
-  const [clicked, setClicked] = useState(false);
+  const [diceProps, setDiceProps] = useState(DiceProperties);
+
+  console.log(diceProps)
 
   function clickItem() {
-      return setClicked(prev => !prev)
+    ///
   }
 
   function rollDice(){
-    return null
+    return ''
   }
+
+  const dice = DiceProperties.map((item) =>{
+    let randomDiceRoll = Math.floor(6*Math.random())+1
+    //return {...item, value: randomDiceRoll}
+    return <Dice key={item.id} clicked={diceProps.clicked} clickItem={clickItem}/>
+  })
 
   return (
     <div className="app">
       <main>
         <h1 className='heading'>Tenzies</h1>
         <p className='paragraph'>Roll until all dice are the same. Click each die to freeze it at its current value between rolls.</p>
-        <Dice clicked={clicked} clickItem={clickItem}/>
+        {/*<Dice clicked={diceProps.clicked} clickItem={clickItem}/> */}
+        <div className='dice-grid'>
+          {dice}
+        </div>
         <button onClick={rollDice}>Roll</button>
       </main>
     </div>
