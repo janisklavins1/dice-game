@@ -24,6 +24,11 @@ button {
   color: #fff;
 }
 
+button:hover {
+  cursor: pointer;
+  background: #4830e6;
+}
+
 .heading {
   font-weight: 700;
   font-size: 25.6px;

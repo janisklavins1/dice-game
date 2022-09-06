@@ -1,14 +1,14 @@
 const DiceProperties =  [
     {
         id: 1,
-        value: null,
+        value: 1,
         clicked: false
-    },   
+    },
     {
         id: 2,
-        value: null,
+        value: 2,
         clicked: false
-    },   
+    },
     {
         id: 3,
         value: null,
@@ -48,7 +48,7 @@ const DiceProperties =  [
         id: 10,
         value: null,
         clicked: false
-    },   
+    },
 ]
 
 export default DiceProperties
