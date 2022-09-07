@@ -4,6 +4,14 @@ import Dice from './components/Dice';
 import DiceProperties from './DiceProperties';
 import Confetti from 'react-confetti'
 
+
+/*
+TODO
+  Confetti proper render based on screen size params
+  Fix winner announcement only when all boxes clicked
+  Clean up code
+*/
+
 function App() {
 
   const [diceProps, setDiceProps] = useState(DiceProperties);
