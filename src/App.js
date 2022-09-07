@@ -9,18 +9,13 @@ function App() {
   const [diceProps, setDiceProps] = useState(DiceProperties);
   const [isWinner, setIsWinner] = useState(false);
 
-  console.log(isWinner)
-
   useEffect(() => {
     return checkWinner()
   }, [diceProps])
 
   function checkWinner() {
-    console.log('checking winner')
     for (let i = 0; i < diceProps.length; i++) {
-      console.log(diceProps[i].value,  diceProps[0].value)
       if (diceProps[i].value !== diceProps[0].value) {
-        console.log('failed check')
         return setIsWinner(false)
       }
     }
@@ -57,6 +52,15 @@ function App() {
     })
   }
 
+  function reset() {
+    setIsWinner(false)
+    setDiceProps(prevDiceProps => {
+      return prevDiceProps.map(item => {
+        return { ...item, value: Math.floor(6 * Math.random()) + 1 }
+      })
+    })
+  }
+
   const dice = diceProps.map((item) => {
     return <Dice key={item.id} diceId={item.id} clicked={item.clicked} clickItem={clickItem} value={item.value} />
   })
@@ -70,7 +74,7 @@ function App() {
         <div className='dice-grid'>
           {dice}
         </div>
-        <button onClick={rollDice}>Roll</button>
+        {isWinner ? <button onClick={reset}>Reset Game</button> : <button onClick={rollDice}>Roll</button>}
       </main>
     </div>
   );
