@@ -18,17 +18,16 @@ function App() {
   const [isWinner, setIsWinner] = useState(false);
 
   useEffect(() => {
+    function checkWinner() {
+      for (let i = 0; i < diceProps.length; i++) {
+        if (diceProps[i].value !== diceProps[0].value) {
+          return setIsWinner(false)
+        }
+      }
+      return setIsWinner(true)
+    }
     return checkWinner()
   }, [diceProps])
-
-  function checkWinner() {
-    for (let i = 0; i < diceProps.length; i++) {
-      if (diceProps[i].value !== diceProps[0].value) {
-        return setIsWinner(false)
-      }
-    }
-    return setIsWinner(true)
-  }
 
   function clickItem(diceId) {
     return setDiceProps(prevDiceProps => {
