@@ -1,5 +1,5 @@
 import './App.css';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Dice from './components/Dice';
 import DiceProperties from './DiceProperties';
 import Confetti from 'react-confetti'
@@ -11,7 +11,12 @@ function App() {
 
   console.log(isWinner)
 
+  useEffect(() => {
+    return checkWinner()
+  }, [diceProps])
+
   function checkWinner() {
+    console.log('checking winner')
     for (let i = 0; i < diceProps.length; i++) {
       console.log(diceProps[i].value,  diceProps[0].value)
       if (diceProps[i].value !== diceProps[0].value) {
@@ -38,8 +43,6 @@ function App() {
   }
 
   function rollDice() {
-    console.log('checking winner')
-    checkWinner()
     setDiceProps(prevDiceProps => {
       const newDiceProps = []
       for (let i = 0; i < prevDiceProps.length; i++) {
