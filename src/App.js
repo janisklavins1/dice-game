@@ -17,6 +17,8 @@ function App() {
   const [diceProps, setDiceProps] = useState(DiceProperties);
   const [isWinner, setIsWinner] = useState(false);
 
+  let clickedState = diceProps.map(item => item.clicked)
+
   useEffect(() => {
     function checkWinner() {
       for (let i = 0; i < diceProps.length; i++) {
@@ -27,7 +29,9 @@ function App() {
       return setIsWinner(true)
     }
     return checkWinner()
-  }, [diceProps])
+  }, [clickedState])
+
+  console.log(clickedState)
 
   function clickItem(diceId) {
     return setDiceProps(prevDiceProps => {
@@ -63,7 +67,11 @@ function App() {
     setIsWinner(false)
     setDiceProps(prevDiceProps => {
       return prevDiceProps.map(item => {
-        return { ...item, value: Math.floor(6 * Math.random()) + 1 }
+        return {
+          ...item,
+          clicked: false,
+          value: Math.floor(6 * Math.random()) + 1
+        }
       })
     })
   }
