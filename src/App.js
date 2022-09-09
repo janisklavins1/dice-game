@@ -2,19 +2,11 @@ import './App.css';
 import { useEffect, useState } from 'react';
 import Dice from './components/Dice';
 import Confetti from 'react-confetti'
+import DiceProperties from './DiceProperties';
 
 function App() {
 
-  const diceProperties = []
-  for (let i = 0; i < 10; i++){
-    diceProperties.push({
-      id: i,
-      value: Math.floor(6 * Math.random()) + 1,
-      checked: false
-    })
-  }
-
-  const [diceProps, setDiceProps] = useState(diceProperties);
+  const [diceProps, setDiceProps] = useState(DiceProperties);
   const [isWinner, setIsWinner] = useState(false);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth)
   const [windowHeight, setWindowHeight] = useState(window.innerHeight)
