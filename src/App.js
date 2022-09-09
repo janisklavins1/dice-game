@@ -74,7 +74,7 @@ function App() {
   }
 
   const dice = diceProps.map((item) => {
-    return <Dice key={item.id} diceId={item.id} clicked={item.clicked} clickItem={clickItem} value={item.value} />
+    return <Dice key={item.id} clicked={item.clicked} clickItem={() => clickItem(item.id)} value={item.value} />
   })
 
   return (
