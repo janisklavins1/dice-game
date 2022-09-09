@@ -10,7 +10,6 @@ function App() {
   const [isWinner, setIsWinner] = useState(false);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth)
   const [windowHeight, setWindowHeight] = useState(window.innerHeight)
-  const [clickedState, setClickedState] = useState(false)
 
   useEffect(() => {
     function watchWidth() {
@@ -31,20 +30,16 @@ function App() {
   }, [])
 
   useEffect(() => {
-    function checkWinner() {
-      for (let i = 0; i < diceProps.length; i++) {
-        if (diceProps[i].value !== diceProps[0].value) {
-          return setIsWinner(false)
-        }
-      }
+    const firstItemValue = diceProps[0].value
+    const allClicked = diceProps.every(item => item.clicked)
+    const allEqual = diceProps.every(item => item.value === firstItemValue)
+    if (allClicked && allEqual) {
       return setIsWinner(true)
     }
-    return checkWinner()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [clickedState])
+    return setIsWinner(false)
+  }, [diceProps])
 
   function clickItem(diceId) {
-    setClickedState(prev => !prev)
     setDiceProps(prevDiceProps => {
       return prevDiceProps.map(item => {
         return item.id === diceId ? { ...item, clicked: !item.clicked } : item
@@ -55,7 +50,7 @@ function App() {
   function rollDice() {
     setDiceProps(prevDiceProps => {
       return prevDiceProps.map(item => {
-        return item.clicked ? item : { ...item, value: Math.floor(6 * Math.random()) + 1 }
+        return item.clicked ? item : { ...item, value: Math.ceil(6 * Math.random()) }
       })
     })
   }
@@ -67,7 +62,7 @@ function App() {
         return {
           ...item,
           clicked: false,
-          value: Math.floor(6 * Math.random()) + 1
+          value: Math.ceil(6 * Math.random())
         }
       })
     })
