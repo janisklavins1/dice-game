@@ -4,6 +4,15 @@ import Dice from './components/Dice';
 import Confetti from 'react-confetti'
 import DiceProperties from './DiceProperties';
 
+/*
+TODO
+CSS dots on dice instead of numbers
+Track number of rolls
+Track time it took to win
+Save best time to localstorage
+
+*/
+
 function App() {
 
   const [diceProps, setDiceProps] = useState(DiceProperties);
