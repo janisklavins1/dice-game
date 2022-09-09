@@ -4,18 +4,13 @@ import Dice from './components/Dice';
 import DiceProperties from './DiceProperties';
 import Confetti from 'react-confetti'
 
-/*
-TODO
-  Fix winner announcement only when all boxes clicked
-  Clean up code
-*/
-
 function App() {
 
   const [diceProps, setDiceProps] = useState(DiceProperties);
   const [isWinner, setIsWinner] = useState(false);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth)
   const [windowHeight, setWindowHeight] = useState(window.innerHeight)
+  const [clickedState, setClickedState] = useState(false)
 
   useEffect(() => {
     function watchWidth() {
@@ -35,9 +30,8 @@ function App() {
     }
   }, [])
 
-  let clickedState = diceProps.map(item => item.clicked)
-
   useEffect(() => {
+    console.log('effect ran')
     function checkWinner() {
       for (let i = 0; i < diceProps.length; i++) {
         if (diceProps[i].value !== diceProps[0].value) {
@@ -47,11 +41,11 @@ function App() {
       return setIsWinner(true)
     }
     return checkWinner()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [clickedState])
 
-  console.log(clickedState)
-
   function clickItem(diceId) {
+    setClickedState(prev => !prev)
     setDiceProps(prevDiceProps => {
       return prevDiceProps.map(item => {
         return item.id === diceId ? { ...item, clicked: !item.clicked } : item
