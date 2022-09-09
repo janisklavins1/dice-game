@@ -8,6 +8,8 @@ function App() {
 
   const [diceProps, setDiceProps] = useState(DiceProperties);
   const [isWinner, setIsWinner] = useState(false);
+
+  ///Section for Confetti component
   const [windowWidth, setWindowWidth] = useState(window.innerWidth)
   const [windowHeight, setWindowHeight] = useState(window.innerHeight)
 
@@ -28,6 +30,8 @@ function App() {
       window.removeEventListener("resize", watchHeight)
     }
   }, [])
+
+  ///End section for Confetti component
 
   useEffect(() => {
     const firstItemValue = diceProps[0].value
