@@ -31,7 +31,6 @@ function App() {
   }, [])
 
   useEffect(() => {
-    console.log('effect ran')
     function checkWinner() {
       for (let i = 0; i < diceProps.length; i++) {
         if (diceProps[i].value !== diceProps[0].value) {
